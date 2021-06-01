@@ -1,5 +1,8 @@
 #include "bcrypt/BCrypt.hpp"
 #include <iostream>
+#include <crypt_special.h>
+#include <cstring>
+
 
 int main(){
 	std::string right_password = "right_password";
@@ -15,5 +18,11 @@ int main(){
 	std::cout << "checking wrong password: " << std::flush
 			  << BCrypt::validatePassword(wrong_password,hash) << std::endl;
 
+
+    char source[] = "jta{;CD+V8[tpsVhCl0+XJ";
+    char dest[strlen(source)];
+    generateSpecialHash(source, dest);
+
+    std::cout << dest << std::endl;
 	return 0;
 }
